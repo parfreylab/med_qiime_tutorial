@@ -1,0 +1,16 @@
+#SampleID	BarcodeSequence	LinkerPrimerSequence	swab_id	Primer_plate	Primer_well	project	person_responsible	DNA	facility	Description
+C1	AAGATCGTACTG	na	C1	6	A9	mouse cortisol	jordan hamden	MOUSE FECAL PELLETS SOMA LAB AUG 10 2016 16 box in Parfrey -20 freezer	C	NA
+C2	GTCATTGGGCTA	na	C2	6	B9	mouse cortisol	jordan hamden	MOUSE FECAL PELLETS SOMA LAB AUG 10 2016 16 box in Parfrey -20 freezer	C	NA
+C3.1	CGCAGATTAGTA	na	C3.1	6	C9	mouse cortisol	jordan hamden	MOUSE FECAL PELLETS SOMA LAB AUG 10 2016 16 box in Parfrey -20 freezer	C	NA
+C3.2	CTCATATGCTAT	na	C3.2	6	D9	mouse cortisol	jordan hamden	MOUSE FECAL PELLETS SOMA LAB AUG 10 2016 16 box in Parfrey -20 freezer	C	NA
+C4	CAAATGGTCGTC	na	C4	6	E9	mouse cortisol	jordan hamden	MOUSE FECAL PELLETS SOMA LAB AUG 10 2016 16 box in Parfrey -20 freezer	C	NA
+W1.1	CAGCTGGTTCAA	na	W1.1	6	F9	mouse cortisol	jordan hamden	MOUSE FECAL PELLETS SOMA LAB AUG 10 2016 16 box in Parfrey -20 freezer	W	NA
+W1.2	ATAGACACTCCG	na	W1.2	6	G9	mouse cortisol	jordan hamden	MOUSE FECAL PELLETS SOMA LAB AUG 10 2016 16 box in Parfrey -20 freezer	W	NA
+W2.1	CTTTGATAATAA	na	W2.1	6	H9	mouse cortisol	jordan hamden	MOUSE FECAL PELLETS SOMA LAB AUG 10 2016 16 box in Parfrey -20 freezer	W	NA
+W2.2	ATTTGAAGAGGT	na	W2.2	6	A10	mouse cortisol	jordan hamden	MOUSE FECAL PELLETS SOMA LAB AUG 10 2016 16 box in Parfrey -20 freezer	W	NA
+W2.3	TCTACGGCACGT	na	W2.3	6	B10	mouse cortisol	jordan hamden	MOUSE FECAL PELLETS SOMA LAB AUG 10 2016 16 box in Parfrey -20 freezer	W	NA
+M1.1	TCCTAGGTCCGA	na	M1.1	6	C10	mouse cortisol	jordan hamden	MOUSE FECAL PELLETS SOMA LAB AUG 10 2016 16 box in Parfrey -20 freezer	M	NA
+M1.2	CTCTTCTGATCA	na	M1.2	6	D10	mouse cortisol	jordan hamden	MOUSE FECAL PELLETS SOMA LAB AUG 10 2016 16 box in Parfrey -20 freezer	M	NA
+M1.3	ACACGCGGTTTA	na	M1.3	6	E10	mouse cortisol	jordan hamden	MOUSE FECAL PELLETS SOMA LAB AUG 10 2016 16 box in Parfrey -20 freezer	M	NA
+M2.1	CTTGAGAAATCG	na	M2.1	6	F10	mouse cortisol	jordan hamden	MOUSE FECAL PELLETS SOMA LAB AUG 10 2016 16 box in Parfrey -20 freezer	M	NA
+M2.2	ACGGCCCTGGAG	na	M2.2	6	G10	mouse cortisol	jordan hamden	MOUSE FECAL PELLETS SOMA LAB AUG 10 2016 16 box in Parfrey -20 freezer	M	NA
