@@ -69,8 +69,14 @@ biom convert -i MED/decompose-M_50/MATRIX-COUNT.transposed.txt -o OTU_table/OTU_
 
 #summarize it
 biom summarize-table -i OTU_table/OTU_Table.biom > OTU_table/OTU_Table.summary
+#viewing the summary file allows us to check and see if we need to remove any samples for lack of reads, and to make sure our negative controls were successful
+
+#we can create parameters files that control what calculations QIIME does during alpha and beta diversity analyses
+echo "alpha_diversity.py:metrics chao1,PD_whole_tree,equitability" > alpha_params.txt
+echo "beta_diversity:metrics bray_curtis,unweighted_unifrac,weighted_unifrac" > beta_params.txt
+
 #alpha diversity
-alpha_rarefaction.py --otu_table_fp OTU_table/OTU_Table.biom --output_dir alphadiversity/ --tree_fp 16s_makephylo_fasttree.tre --mapping_fp metadata/mouse_cortisol.mapping_file.txt
+alpha_rarefaction.py --otu_table_fp OTU_table/OTU_Table.biom --output_dir alphadiversity/ --tree_fp 16s_makephylo_fasttree.tre --mapping_fp metadata/mouse_cortisol.mapping_file.txt -p alpha_params.txt
 #based on alpha rarefaction plots we can remove samples with fewer than 8301 reads (none of them)
 
 #now we add the taxonomy
@@ -78,7 +84,7 @@ biom add-metadata -i OTU_table/OTU_Table.biom -o OTU_table/OTU_Table.wtaxa.biom 
 cd .. #back to main directory
 
 #calculate beta diversity
-beta_diversity_through_plots.py --otu_table_fp OTU_table/OTU_Table.wtaxa.biom --output_dir betadiversity/ --tree_fp 16s_makephylo_fasttree.tre --mapping_fp metadata/mouse_cortisol.mapping_file.txt
+beta_diversity_through_plots.py --otu_table_fp OTU_table/OTU_Table.wtaxa.biom --output_dir betadiversity/ --tree_fp 16s_makephylo_fasttree.tre --mapping_fp metadata/mouse_cortisol.mapping_file.txt -p beta_params.txt
 
 #summarize taxa in OTU table
 summarize_taxa_through_plots.py -i OTU_table/OTU_Table.wtaxa.biom -o ./summarize_taxa
