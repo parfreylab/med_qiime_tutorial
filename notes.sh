@@ -41,6 +41,9 @@ sed 's/^0*//' MED/decompose-M_50/MATRIX-COUNT.txt_transposed > MED/decompose-M_5
 #MED also includes leading zeros in it's node representative fasta file, and the number of reads that belong to each node. QIIME doesn't like either of these things, so we remove them
 sed 's/|size:[0-9]*$//g' MED/decompose-M_50/NODE-REPRESENTATIVES.fasta | sed 's/^>0*/>/' > MED/decompose-M_50/NODE-REPRESENTATIVES.DOWNSTREAM.fasta
 
+#To install qiime for macs:
+macqiime
+
 ####################
 #ASSIGNING TAXONOMY#
 ####################
