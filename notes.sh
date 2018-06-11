@@ -14,8 +14,8 @@
 ###########
 #the first step after preparing our data is to run MED. 
 #MED is invoked like this:
-decompose data/seqs.trimmed_filtered_250bp.MED.fna --gen-html -o MED/decompose-M_50 #this takes about 4 minutes on a 3 core machine, but we'll cheat to make it faster by increasing the minimum substantive abundance per node
-decompose data/seqs.trimmed_filtered_250bp.MED.fna -M 50 --gen-html -o MED/decompose-M_50
+decompose data/seqs.trimmed_filtered_250bp.MED.fna -o MED/decompose-M_50 #this takes about 4 minutes on a 3 core machine, but we'll cheat to make it faster by increasing the minimum substantive abundance per node
+decompose data/seqs.trimmed_filtered_250bp.MED.fna -M 50 -o MED/decompose-M_50
 
 #MED sorts sequences into groups (nodes) then calculates the entropy of the nodes based on sequence similarity. 
 #each node is divided in two to reduce entropy, and the process is repeated until a minimum threshold of entropy is reached. 
@@ -40,6 +40,9 @@ sed 's/^0*//' MED/decompose-M_50/MATRIX-COUNT.txt_transposed > MED/decompose-M_5
 
 #MED also includes leading zeros in it's node representative fasta file, and the number of reads that belong to each node. QIIME doesn't like either of these things, so we remove them
 sed 's/|size:[0-9]*$//g' MED/decompose-M_50/NODE-REPRESENTATIVES.fasta | sed 's/^>0*/>/' > MED/decompose-M_50/NODE-REPRESENTATIVES.DOWNSTREAM.fasta
+
+#To install Qiime for macs:
+macqiime
 
 ####################
 #ASSIGNING TAXONOMY#
