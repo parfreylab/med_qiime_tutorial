@@ -68,11 +68,11 @@ python trimheaders.rm_lead_zeroes.py -m MED/decompose-M_25/MATRIX-COUNT.txt -n M
 ######################
 ## CHIMERA CHECKING ##
 ######################
-# chimera checking requires a reference database: the 16s and 18s SILVA DBs can be found on the lab computers. Below are examples of a path to the files needed (example/path/), but please change as needed
+# chimera checking requires a reference database: the 16s and 18s SILVA DBs can be found on the lab computers, and the 18s database is on the lab github. Below we use a reduced version of the full database, please change as needed for your own experiments.
 
 ## Method 1:
 # Check for any chimeric sequences using qiime and usearch61 for smaller datasets (in this example, data is 18s):
-identify_chimeric_seqs.py -i data/westbeach/NODE-REPRESENTATIVES.DOWNSTREAM.fasta -m usearch61 -o usearch_checked_chimeras/ -r example/path/../../../taxonomy_databases/SILVA_128/18s/rep_set_unaligned/99_SILVA_128_euks_rep_set.fasta
+identify_chimeric_seqs.py -i data/westbeach/NODE-REPRESENTATIVES.DOWNSTREAM.fasta -m usearch61 -o usearch_checked_chimeras/ -r db_files/88_SILVA_128_prks_rep_set.fasta
 
 # Check number of sequences marked as chimeric. Usually no more than 10%
 less usearch_checked_chimeras/identify_chimeric_seqs.log 
@@ -82,7 +82,7 @@ filter_fasta.py -f data/westbeach/NODE-REPRESENTATIVES.DOWNSTREAM.fasta -o data/
 
 ## Method 2:
 # identify_chimeric_seqs.py doesn't work for large datasets (because of its high memory footprint), so you will need to use vsearch instead if you run out of memory
-vsearch --uchime_ref data/westbeach/NODE-REPRESENTATIVES.DOWNSTREAM.fasta --db example/path/../../../taxonomy_databases/SILVA_128/16s/rep_set_unaligned/99_SILVA_128_prks_rep_set.fasta --chimeras data/Westbeach/NODE-REPRESENTATIVES.DOWNSTREAM.chimeras.fasta --nonchimeras data/Westbeach/NODE-REPRESENTATIVES.DOWNSTREAM.no_chimeras.fasta
+vsearch --uchime_ref data/westbeach/NODE-REPRESENTATIVES.DOWNSTREAM.fasta --db db_files/88_SILVA_128_prks_rep_set.fasta --chimeras data/westbeach/NODE-REPRESENTATIVES.DOWNSTREAM.chimeras.fasta --nonchimeras data/westbeach/NODE-REPRESENTATIVES.DOWNSTREAM.no_chimeras.fasta
 
 # In this case, there were 1.9% chimeras, so we can continue 
 
@@ -91,7 +91,7 @@ vsearch --uchime_ref data/westbeach/NODE-REPRESENTATIVES.DOWNSTREAM.fasta --db e
 ########################
 # Make sure to use correct database (in this case, 16s)
 # Assign taxonomy based on 18s taxonomy map and unaligned 16s sequences 
-assign_taxonomy.py -i data/westbeach/NODE-REPRESENTATIVES.DOWNSTREAM.no_chimeras.fasta -t example/path/../../../taxonomy_databases/SILVA_128/18s/taxonomy_maps/99_SILVA_128_taxa_map_7_levels.txt -r example/path/../../../taxonomy_databases/SILVA_128/18s/rep_set_unaligned/99_SILVA_128_euks_rep_set.fasta -m uclust -o ./assign_taxonomy
+assign_taxonomy.py -i data/westbeach/NODE-REPRESENTATIVES.DOWNSTREAM.no_chimeras.fasta -t db_files/88_SILVA_128_taxa_map_7_levels.txt -r db_files/99_SILVA_128_prks_rep_set.fasta -m uclust -o ./assign_taxonomy
 
 ####################
 # MAKING OTU TABLE #
@@ -115,7 +115,7 @@ biom add-metadata -i otu_table/OTU_Table.biom -o otu_table/OTU_Table.wtaxa.biom 
 ############################
 # Using NODE-REPRESENTATIVES.DOWNSTREAM.fasta to assign taxonomy to each node using QIIME
 # Aligned according to SILVA 16s (since our data is 16s)
-align_seqs.py -i data/westbeach/NODE-REPRESENTATIVES.DOWNSTREAM.no_chimeras.fasta -t example/path/../../../taxonomy_databases/SILVA_128/18s/rep_set_aligned/99_SILVA_128_aligned_rep_set.fasta -o aligned_seqs
+align_seqs.py -i data/westbeach/NODE-REPRESENTATIVES.DOWNSTREAM.no_chimeras.fasta -t db_files/88_SILVA_128_aligned_rep_set.fasta -o aligned_seqs
 
 # Filter alignments. Since this is not clade specific, we will include a 5% entropic threshold
 filter_alignment.py -i aligned_seqs/NODE-REPRESENTATIVES.DOWNSTREAM.no_chimeras_aligned.fasta -o filter_alignment_G90_E05 -g 0.90 -e 0.05
