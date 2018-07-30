@@ -1,0 +1,2 @@
+split_libraries_fastq:phred_quality_threshold 19
+split_libraries:min_seq_length 250
